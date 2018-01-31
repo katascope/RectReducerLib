@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RectReducer", "RectReducer.vcxproj", "{03A9943C-77A5-4389-BFBD-5691603F0819}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8E5BA056-11E3-45BC-AB1E-2CA7A77E4583} = {8E5BA056-11E3-45BC-AB1E-2CA7A77E4583}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RectReducerUnitTests", "RectReducerUnitTests\RectReducerUnitTests.vcxproj", "{D3F1855E-7C5B-4E99-B39C-C6838315A645}"
+	ProjectSection(ProjectDependencies) = postProject
+		{03A9943C-77A5-4389-BFBD-5691603F0819} = {03A9943C-77A5-4389-BFBD-5691603F0819}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RectReducerLib", "RectReducerLib\RectReducerLib.vcxproj", "{8E5BA056-11E3-45BC-AB1E-2CA7A77E4583}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03A9943C-77A5-4389-BFBD-5691603F0819}.Debug|Win32.ActiveCfg = Debug|Win32
+		{03A9943C-77A5-4389-BFBD-5691603F0819}.Debug|Win32.Build.0 = Debug|Win32
+		{03A9943C-77A5-4389-BFBD-5691603F0819}.Release|Win32.ActiveCfg = Release|Win32
+		{03A9943C-77A5-4389-BFBD-5691603F0819}.Release|Win32.Build.0 = Release|Win32
+		{D3F1855E-7C5B-4E99-B39C-C6838315A645}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D3F1855E-7C5B-4E99-B39C-C6838315A645}.Debug|Win32.Build.0 = Debug|Win32
+		{D3F1855E-7C5B-4E99-B39C-C6838315A645}.Release|Win32.ActiveCfg = Release|Win32
+		{D3F1855E-7C5B-4E99-B39C-C6838315A645}.Release|Win32.Build.0 = Release|Win32
+		{8E5BA056-11E3-45BC-AB1E-2CA7A77E4583}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8E5BA056-11E3-45BC-AB1E-2CA7A77E4583}.Debug|Win32.Build.0 = Debug|Win32
+		{8E5BA056-11E3-45BC-AB1E-2CA7A77E4583}.Release|Win32.ActiveCfg = Release|Win32
+		{8E5BA056-11E3-45BC-AB1E-2CA7A77E4583}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
