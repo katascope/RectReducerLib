@@ -7,9 +7,10 @@
 class RectConverter
 {
 public:
-	static std::vector<Rect> ArrayToRectangles(int id, int *matrix, int width, int height, int depth);
-	static std::set<int> ArrayToIds(int *matrix, int width, int height, int depth);
-	static std::vector<std::vector<Rect>> ArrayToRectVectors(int *matrix, int width, int height, int depth);
+	static unsigned int RectanglesToDistinctIdCount(std::vector<Rect> rects);
+	static std::vector<std::vector<Rect>> RectanglesToSeparatedRectangles(std::vector<Rect> rects);
+
+	static std::vector<Rect> ArrayToRectangles(int *matrix, int width, int height, int depth);
 };
 
 #endif

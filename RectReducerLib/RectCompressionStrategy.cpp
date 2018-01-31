@@ -27,6 +27,7 @@ bool RectCompressionStrategy::CompressX(std::vector<Rect> &rects)
 			}
 		}
 	}
+	return false;
 }
 
 bool RectCompressionStrategy::CompressY(std::vector<Rect> &rects)
@@ -51,6 +52,7 @@ bool RectCompressionStrategy::CompressY(std::vector<Rect> &rects)
 			}
 		}
 	}
+	return false;
 }
 
 bool RectCompressionStrategy::CompressZ(std::vector<Rect> &rects)
@@ -75,4 +77,5 @@ bool RectCompressionStrategy::CompressZ(std::vector<Rect> &rects)
 			}
 		}
 	}
+	return false;
 }

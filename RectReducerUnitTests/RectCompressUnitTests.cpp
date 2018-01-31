@@ -15,11 +15,12 @@ namespace RectCompressUnitTests
 		TEST_METHOD(TestRectCompressRects)
 		{
 			int array[3][3][1] = { 0, 1, 0, 0, 1, 0, 1, 1, 1 };
-			std::vector<Rect> rects = RectConverter::ArrayToRectangles(1, &array[0][0][0], 3, 3, 1);
+			std::vector<Rect> rects = RectConverter::ArrayToRectangles(&array[0][0][0], 3, 3, 1);
 
-			RectCompressionStrategy::XYZ(rects);
+			std::vector<std::vector<Rect>> rectsSeparated = RectConverter::RectanglesToSeparatedRectangles(rects);
+			RectCompressionStrategy::XYZ(rectsSeparated[1]);
 
-			Assert::AreEqual(rects.size(), (unsigned int)2);
+			Assert::AreEqual(rectsSeparated[1].size(), (unsigned int)2);
 		}
 
 		TEST_METHOD(TestRectCompressRectsVector)
@@ -30,7 +31,9 @@ namespace RectCompressUnitTests
 				1, 1, 1
 			};
 
-			std::vector<std::vector<Rect>> rectVectors = RectConverter::ArrayToRectVectors(&matrixComplex[0][0][0], 3, 3, 1);
+			std::vector<std::vector<Rect>> rectVectors = 
+				RectConverter::RectanglesToSeparatedRectangles(
+				RectConverter::ArrayToRectangles(&matrixComplex[0][0][0], 3, 3, 1));
 			Assert::AreEqual(rectVectors.size(), (unsigned int)4);
 
 			RectCompress::Compress(rectVectors, RectCompressionStrategy::XYZ);

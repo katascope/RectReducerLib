@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "RectConverter.h"
+#include <map>
 
-std::vector<Rect> RectConverter::ArrayToRectangles(int id, int *matrix, int width, int height, int depth)
+std::vector<Rect> RectConverter::ArrayToRectangles(int *matrix, int width, int height, int depth)
 {
 	std::vector<Rect> rects;
 
@@ -15,50 +16,41 @@ std::vector<Rect> RectConverter::ArrayToRectangles(int id, int *matrix, int widt
 					z * (height * width) +
 					y * (width)+
 					x;
-				if (matrix[offset] == id)
-				{
-					//printf("Creating rect %u,%u,%u\n", x, y, z);
-					Rect *rect = new Rect(id, x, y, z, x + 1, y + 1, z + 1);
-					rects.push_back(*rect);
-				}
+				Rect rect(matrix[offset], x, y, z, x + 1, y + 1, z + 1);
+				rects.push_back(rect);
 			}
 		}
 	}
 	return rects;
 }
 
-std::set<int> RectConverter::ArrayToIds(int *matrix, int width, int height, int depth)
+unsigned int RectConverter::RectanglesToDistinctIdCount(std::vector<Rect> rects)
 {
 	std::set<int> ids;
-	for (int z = 0; z < depth; z++)
-	{
-		for (int y = 0; y < height; y++)
-		{
-			for (int x = 0; x < width; x++)
-			{
-				unsigned int offset =
-					z * (height * width) +
-					y * (width)+
-					x;
-				int value = matrix[offset];
-				ids.insert(value);
-			}
-		}
-	}
-	return ids;
+
+	for (Rect rect : rects)
+		ids.emplace(rect._id);
+
+	return ids.size();
 }
 
-std::vector<std::vector<Rect>> RectConverter::ArrayToRectVectors(int *matrix, int width, int height, int depth)
+std::vector<std::vector<Rect>> RectConverter::RectanglesToSeparatedRectangles(std::vector<Rect> rects)
 {
-	std::vector<std::vector<Rect>> vectors;
+	std::vector<std::vector<Rect>> separated;
 
-	std::set<int> ids = ArrayToIds(matrix, width, height, depth);
+	unsigned int types = RectanglesToDistinctIdCount(rects);
 
-	for (int id : ids)
+	std::map<unsigned int, std::vector<Rect>> maps;
+
+	for (unsigned int rect = 0; rect < rects.size();rect++)
 	{
-		std::vector<Rect> rects = ArrayToRectangles(id, matrix, width, height, depth);
-		vectors.push_back(rects);
+		maps[rects[rect]._id].push_back(rects[rect]);
 	}
 
-	return vectors;
+	for (unsigned int rect = 0; rect < maps.size(); rect++)
+	{
+		separated.push_back(maps[rect]);
+	}
+
+	return separated;
 }

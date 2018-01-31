@@ -84,6 +84,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FloodFill.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RectCompress.cpp" />
     <ClCompile Include="RectCompressionStrategy.cpp" />

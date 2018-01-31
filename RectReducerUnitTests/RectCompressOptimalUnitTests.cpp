@@ -19,10 +19,11 @@ namespace RectCompressOptimalUnitTests
 				0, 1, 0, 
 				1, 1, 1
 			};
-			std::vector<Rect> rects = RectConverter::ArrayToRectangles(1, &array[0][0][0], 3, 3, 1);
-			RectCompressionStrategy::BestXYZ(rects);
+			std::vector<Rect> rects = RectConverter::ArrayToRectangles(&array[0][0][0], 3, 3, 1);
+			std::vector<std::vector<Rect>> rectsSeparated = RectConverter::RectanglesToSeparatedRectangles(rects);
+			RectCompressionStrategy::BestXYZ(rectsSeparated[1]);
 
-			Assert::AreEqual(rects.size(), (unsigned int)2);
+			Assert::AreEqual(rectsSeparated[1].size(), (unsigned int)2);
 		}
 
 		TEST_METHOD(TestRectCompressOptimalCase2)
@@ -32,10 +33,11 @@ namespace RectCompressOptimalUnitTests
 				1, 1, 1,
 				0, 0, 1
 			};
-			std::vector<Rect> rects = RectConverter::ArrayToRectangles(1, &array[0][0][0], 3, 3, 1);
-			RectCompressionStrategy::BestXYZ(rects);
+			std::vector<Rect> rects = RectConverter::ArrayToRectangles(&array[0][0][0], 3, 3, 1);
+			std::vector<std::vector<Rect>> rectsSeparated = RectConverter::RectanglesToSeparatedRectangles(rects);
+			RectCompressionStrategy::BestXYZ(rectsSeparated[1]);
 
-			Assert::AreEqual(rects.size(), (unsigned int)2);
+			Assert::AreEqual(rectsSeparated[1].size(), (unsigned int)2);
 		}
 	};
 }
